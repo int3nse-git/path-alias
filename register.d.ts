@@ -26,6 +26,10 @@ declare namespace pathAlias {
     function addAliases(aliases: { [alias: string]: string }): void;
 
     function resolve(path: string): string;
+    
+    function removeAlias(...alias: string | string[]): void;
+    
+    function removeAliases(...alias: string | string[]): void;
 
     /**
      * module intialis options type

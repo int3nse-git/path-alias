@@ -72,6 +72,20 @@ function addAlias(alias, target) {
     pathAliasNames.sort().reverse();
 }
 
+function removeAlias(...alias) {
+    for (let i = 0; i < alias.length; i++) {
+        if (Array.isArray(alias[i])) {
+            removeAlias(...alias[i]);
+            continue;
+        }
+        
+        delete pathAliases[alias[i]];
+    }
+    
+    pathAliasNames = Object.keys(pathAliases);
+    pathAliasNames.sort().reverse();
+}
+
 function pathContainsAlias(path, alias) {
     // Matching /^alias(\/|$)/
     return (path.indexOf(alias) === 0 && (path.length === alias.length || path[alias.length] === '/'));
@@ -111,12 +125,14 @@ Module._resolveFilename = function(request, parentModule, isMain, options) {
 const exportObj = {
     addPath,
     addAlias,
+    removeAlias,
     resolve,
     pathContainsAlias,
     
     // Added to not have any breaking differences between this module and the module it's based off of, module-alias
     isPathMatchesAlias: pathContainsAlias,
-    addAliases: addAlias
+    addAliases: addAlias,
+    removeAliases: removeAlias,
 };
 
 /**
