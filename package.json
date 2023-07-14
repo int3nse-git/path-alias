@@ -1,0 +1,14 @@
+{
+  "name": "path-alias",
+  "version": "1.0.0",
+  "description": "Smart aliasing for paths, files, and modules",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "int3nse-git",
+  "license": "ISC",
+  "dependencies": {
+    "caller-callsite": "github:int3nse-git/caller-callsite-cjs"
+  }
+}
